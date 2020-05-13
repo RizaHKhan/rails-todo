@@ -16,3 +16,13 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.filter_rails_from_backtrace!
 end
+
+require "bundler/setup"
+::Bundler.require(:default, :test)
+require "shoulda/matchers"
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
